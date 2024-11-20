@@ -1,0 +1,225 @@
+:root {
+    --primary-color: #00c8ff;
+    --secondary-color: #0a0f12;
+    --background-gradient: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    --header-bg-color: rgba(0, 0, 0, 0.8);
+    --box-shadow-color: rgba(0, 200, 255, 0.5);
+    --text-color: white;
+    --border-color: var(--primary-color);
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    --transition-speed: 0.3s;
+    --dot-active-color: var(--primary-color);
+    --dot-inactive-color: #ccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', Arial, sans-serif;
+    background: var(--background-gradient);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--header-bg-color);
+    color: var(--text-color);
+    z-index: 1;
+    box-shadow: 0 0 10px var(--box-shadow-color);
+    padding: 20px 0;
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--primary-color);
+}
+
+.config-icon {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.navbar ul {
+    list-style: none;
+    text-align: center;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 10px;
+    border: 2px solid transparent;
+    padding: 5px;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.navbar ul li:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--border-color);
+    border-radius: 5px;
+}
+
+.navbar ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 160px 40px 20px;
+}
+
+.image-gallery-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 50%;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    margin: 40px auto;
+}
+
+.image-gallery {
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+.arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.arrows button {
+    background: var(--overlay-bg);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: background var(--transition-speed);
+}
+
+.arrows button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.text-container {
+    width: 50%;
+    padding: 20px;
+    height: 470px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--overlay-bg);
+    margin-left: 20px;
+    margin-top: 40px;
+    overflow-y: auto;
+}
+
+.text-container h2 {
+    color: var(--primary-color);
+}
+
+.text-container p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.progress-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.progress-dots .dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: var(--dot-inactive-color);
+    border-radius: 50%;
+    transition: background-color var(--transition-speed);
+}
+
+.progress-dots .dot.active {
+    background-color: var(--dot-active-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 5px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--overlay-bg);
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.config-icon img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@media (max-width: 840px) {
+    .container {
+        flex-direction: column;
+        padding: 80px 20px 20px;
+    }
+
+    .image-gallery-wrapper {
+        margin-top: 100px;
+        max-width: 100%;
+    }
+
+    .text-container {
+        width: 100%;
+        margin-left: 0;
+        align-self: flex-start;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    .header-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .config-icon {
+        right: 10px;
+        top: 5px;
+    }
+}
