@@ -14,32 +14,41 @@ body {
 }
 
 header {
-    position: relative;
+    position: fixed;
+    top: 0;
     width: 100%;
     background-color: var(--header-bg-color);
     color: var(--text-color);
+    z-index: 1;
     box-shadow: 0 0 10px var(--box-shadow-color);
+    padding: 20px 0;
 }
 
 .header-title {
     display: flex;
-    text-align: center;
-    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
     color: var(--primary-color);
+    position: relative;
 }
 
-
-.config-icon img {
-    width: 30px; 
-    height: 30px;
+.config-icon {
     position: absolute;
     right: 20px;
     top: 10px;
 }
 
+.config-icon img {
+    width: 30px; 
+    height: 30px;
+}
+
+.navbar ul {
+    list-style: none;
+    text-align: center;
+}
 
 .navbar ul li {
-    text-align: center;
     display: inline-block;
     margin: 0 10px;
     border: 2px solid transparent;
@@ -58,7 +67,6 @@ header {
     color: var(--text-color);
     text-decoration: none;
     font-size: 18px;
-    text-align: center;
 }
 
 .container {
@@ -68,39 +76,15 @@ header {
     padding: 160px 40px 20px;
 }
 
-.login-form {
+#registration-Form{
     background-color: var(--overlay-bg);
     border-radius: 8px;
     box-shadow: 0 0 15px var(--box-shadow-color);
-    width: 60%;
+    width: 100%;
     height: auto;
     backdrop-filter: blur(10px);
     padding: 20px;
-}
-
-.login-form h1 {
-    margin-bottom: 30px;
-    font-size: 5vh;
     color: var(--primary-color);
-    text-align: center;
-}
-
-.join-message {
-    text-align: center;
-    color: var(--text-color);
-    font-size: 4vh;
-    margin-bottom: 20px;
-}
-
-.join-message a {
-    color: var(--primary-color);
-    text-decoration: underline;
-    font-weight: bold;
-    transition: color var(--transition-speed) ease;
-}
-
-.join-message a:hover {
-    color: var(--link-hover-color);
 }
 
 .input-group {
@@ -114,7 +98,8 @@ header {
     font-size: 5vh;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--border-color);
@@ -122,7 +107,7 @@ header {
     font-size: 5vh;
     background-color: var(--input-bg);
     color: var(--text-color);
-    text-shadow: 0 0 5px var(--primary-color);
+    text-shadow: var(--input-text-shadow);
 }
 
 button {
@@ -139,7 +124,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--link-hover-color);
+    background-color: var(--button-hover-color);
     text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
 }
 
@@ -150,6 +135,25 @@ button:hover {
     text-align: center;
 }
 
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 5px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+.registration-Form {
+    background-color: var(--overlay-bg);
+    border-radius: 8px;
+    box-shadow: 0 0 15px var(--box-shadow-color);
+    width: 60%;
+    height: auto;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+}
 @media (max-width: 650px) {
     header {
         padding: 5px 0; 

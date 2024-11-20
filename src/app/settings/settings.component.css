@@ -1,0 +1,188 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--header-bg-color);
+    color: var(--text-color);
+    z-index: 1;
+    box-shadow: 0 0 10px var(--box-shadow-color);
+    padding: 20px 0;
+}
+.header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--primary-color);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--background-gradient);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-rendering: optimizeLegibility;
+  }
+  
+  .config-tab {
+    background: var(--header-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--box-shadow-color);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  h1 {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    color: var(--primary-color);
+    text-shadow: 0 2px 4px var(--box-shadow-color);
+  }
+  
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin: 0;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 5px;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 5px;
+    color: var(--text-color);
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="file"],
+  select {
+    padding: 10px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed);
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  select:focus {
+    outline: none;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+  
+  input[type="range"] {
+    width: 100%;
+    appearance: none;
+    background: var(--primary-color);
+    height: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  #profile-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    transition: transform var(--transition-speed);
+  }
+  
+  #profile-preview:hover {
+    transform: scale(1.05);
+  }
+  
+  label[for="profile-picture"] {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+  }
+  
+  label[for="profile-picture"]:hover {
+    background-color: var(--link-hover-color);
+    transform: scale(1.1);
+  }
+  
+  .save-button {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+  }
+  
+  .save-button:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--border-color);
+    border-radius: 5px;
+  }
+  
+  .image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button:active {
+    background-color: var(--button-bg-hover);
+  }
+  

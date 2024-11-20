@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #00c8ff;
+    --secondary-color: #0a0f12;
+    --background-gradient: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    --header-bg-color: rgba(0, 0, 0, 0.8);
+    --box-shadow-color: rgba(0, 200, 255, 0.5);
+    --text-color: white;
+    --border-color: var(--primary-color);
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    --transition-speed: 0.3s;
+    --dot-active-color: var(--primary-color);
+    --dot-inactive-color: #ccc;
+}

@@ -14,29 +14,35 @@ body {
 }
 
 header {
-    position: relative;
+    position: fixed;
+    top: 0;
     width: 100%;
     background-color: var(--header-bg-color);
     color: var(--text-color);
+    z-index: 1;
     box-shadow: 0 0 10px var(--box-shadow-color);
+    padding: 20px 0;
 }
 
 .header-title {
     display: flex;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     padding: 10px 20px;
     color: var(--primary-color);
 }
 
 
-.config-icon img {
-    width: 30px; 
-    height: 30px;
+.config-icon  {
     position: absolute;
     right: 20px;
     top: 10px;
 }
 
+.navbar ul {
+    list-style: none;
+    text-align: center;
+}
 
 .navbar ul li {
     text-align: center;

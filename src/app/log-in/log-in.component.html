@@ -1,0 +1,45 @@
+<body>
+    <header>
+        <div class="header-title">
+            <h1>ProyManager</h1>
+            <div class="config-icon">
+                <a href="../Configuration/Index.html">
+                    <img src="../Images/Configuration.jpg" alt="Configuration">
+                </a>
+            </div>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a routerLink="../Home">Home</a></li>
+                <li><a routerLink="../About_us">How we work?</a></li>
+                <li><a routerLink="../Projects">Your Projects</a></li>
+                <li><a href="../Log_in">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="login-form">
+            <h1>Enter your login credentials</h1>
+            <div class="error-message" id="error-message" style="display: none;"></div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your username" minlength="3" maxlength="20" pattern="^[a-zA-Z0-9_.-]*$" title="The username must only contain letters, numbers, and certain special characters like . _ -">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Password" minlength="8" maxlength="20" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*?&]{8,}$" title="The password must be at least 8 characters long, include letters, numbers, and special symbols.">
+                </div>
+
+                <div class="join-message" style="font-size: 3vh; text-align: center; margin-top: 10px;">
+                    <p>Not a part of us yet? Would you like to join?</p>
+                    <a routerLink="../About_us" target="_blank">See information here</a>
+                </div>
+
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+</body>

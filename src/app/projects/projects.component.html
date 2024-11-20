@@ -1,1 +1,51 @@
-<p>projects works!</p>
+<body>
+    <header>
+        <div class="header-title">
+            <h1>ProyManager</h1>
+            <div class="config-icon">
+                <a href="../Configuration/Index.html">
+                    <img src="../Images/Configuration.jpg" alt="Configuration">
+                </a>
+            </div>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a routerLink="../Home">Home</a></li>
+                <li><a routerLink="../About_us">How we work?</a></li>
+                <li><a routerLink="../Projects">Your Projects</a></li>
+                <li><a href="../Log_in">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="projects">
+            <div class="project-list">
+                
+                <div class="project-item">
+                    <img src="../Images/Software_3.jpg" alt="Software Engineering">
+                    <h3>Software Engineering</h3>
+                    <p>Software Engineering focuses on the design, development, and management of software. Students learn about programming, system design, and software development methodologies, preparing graduates to work in a variety of technology industries.</p>
+                    <button onclick="showModal('Software Engineering focuses on the design, development, and management of software. Students learn about programming, system design, and software development methodologies, preparing graduates to work in a variety of technology industries.')">See More</button>
+                </div>
+                
+                <div class="project-item">
+                    <img src="../Images/agricultural_Machine.jpg" alt="Agricultural Engineering">
+                    <h3>Agricultural Engineering</h3>
+                    <p>Agricultural Engineering focuses on applying engineering principles to solve problems in agriculture. Students study topics such as agricultural resource management, crop technology, and agricultural machinery.</p>
+                    <button onclick="showModal('Agricultural Engineering focuses on applying engineering principles to solve problems in agriculture. Students study topics such as agricultural resource management, crop technology, and agricultural machinery.')">See More</button>
+                </div>
+                
+                <div class="project-item">
+                    <img src="../images/Machine.jpg" alt="Petroleum Engineering">
+                    <h3>Petroleum Engineering</h3>
+                    <p>Petroleum Engineering is oriented towards the study of exploration, extraction, and processing of petroleum and natural gas. Students learn about drilling techniques, petroleum refining, and energy resource management.</p>
+                    <button onclick="showModal('Petroleum Engineering is oriented towards the study of exploration, extraction, and processing of petroleum and natural gas. Students learn about drilling techniques, petroleum refining, and energy resource management.')">See More</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>These are all your projects!</p>
+    </footer>
+</body>
