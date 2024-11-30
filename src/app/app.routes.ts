@@ -7,6 +7,12 @@ import { SettingsComponent } from './settings/settings.component';
 import { LogInFormComponent } from './log-in-form/log-in-form.component';
 
 export const routes: Routes = [
+
+    {
+        path: '',
+        redirectTo: 'Home',
+        pathMatch: 'full'
+    },
     {
         path:"Home",
         component: HomeComponent
