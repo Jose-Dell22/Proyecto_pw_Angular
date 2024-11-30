@@ -18,9 +18,9 @@
         </nav>
     </header>
     
-    <!-- Botón de añadir proyecto -->
-    <div class="add-project-container">
-        <button onclick="addProject()">Add New Project</button>
+
+    <div class="btn-add">
+        <button onclick="addProject()" aria-label="Add New Project">Add New Project</button>
     </div>
 
     <main>
@@ -29,25 +29,25 @@
                 <div class="project-item">
                     <h3>Software Engineering</h3>
                     <p>Software Engineering focuses on the design, development, and management of software. Students learn about programming, system design, and software development methodologies, preparing graduates to work in a variety of technology industries.</p>
-                    <button onclick="showModal('Software Engineering focuses on the design, development, and management of software. Students learn about programming, system design, and software development methodologies, preparing graduates to work in a variety of technology industries.')">See More</button>
-                    <button onclick="editProject('Software Engineering')">Edit</button>
-                    <button onclick="deleteProject('Software Engineering')">Delete</button>
+                    <button class="btn-see-more" onclick="showModal('Software Engineering focuses on the design, development, and management of software. Students learn about programming, system design, and software development methodologies, preparing graduates to work in a variety of technology industries.')" aria-label="See more about Software Engineering">See More</button>
+                    <button class="btn-edit" onclick="editProject('Software Engineering')" aria-label="Edit Software Engineering Project">Edit</button>
+                    <button class="btn-delete" onclick="deleteProject('Software Engineering')" aria-label="Delete Software Engineering Project">Delete</button>
                 </div>
-                
+
                 <div class="project-item">
                     <h3>Agricultural Engineering</h3>
                     <p>Agricultural Engineering focuses on applying engineering principles to solve problems in agriculture. Students study topics such as agricultural resource management, crop technology, and agricultural machinery.</p>
-                    <button onclick="showModal('Agricultural Engineering focuses on applying engineering principles to solve problems in agriculture. Students study topics such as agricultural resource management, crop technology, and agricultural machinery.')">See More</button>
-                    <button onclick="editProject('Agricultural Engineering')">Edit</button>
-                    <button onclick="deleteProject('Agricultural Engineering')">Delete</button>
+                    <button class="btn-see-more" onclick="showModal('Agricultural Engineering focuses on applying engineering principles to solve problems in agriculture. Students study topics such as agricultural resource management, crop technology, and agricultural machinery.')" aria-label="See more about Agricultural Engineering">See More</button>
+                    <button class="btn-edit" onclick="editProject('Agricultural Engineering')" aria-label="Edit Agricultural Engineering Project">Edit</button>
+                    <button class="btn-delete" onclick="deleteProject('Agricultural Engineering')" aria-label="Delete Agricultural Engineering Project">Delete</button>
                 </div>
-                
+
                 <div class="project-item">
                     <h3>Petroleum Engineering</h3>
                     <p>Petroleum Engineering is oriented towards the study of exploration, extraction, and processing of petroleum and natural gas. Students learn about drilling techniques, petroleum refining, and energy resource management.</p>
-                    <button onclick="showModal('Petroleum Engineering is oriented towards the study of exploration, extraction, and processing of petroleum and natural gas. Students learn about drilling techniques, petroleum refining, and energy resource management.')">See More</button>
-                    <button onclick="editProject('Petroleum Engineering')">Edit</button>
-                    <button onclick="deleteProject('Petroleum Engineering')">Delete</button>
+                    <button class="btn-see-more" onclick="showModal('Petroleum Engineering is oriented towards the study of exploration, extraction, and processing of petroleum and natural gas. Students learn about drilling techniques, petroleum refining, and energy resource management.')" aria-label="See more about Petroleum Engineering">See More</button>
+                    <button class="btn-edit" onclick="editProject('Petroleum Engineering')" aria-label="Edit Petroleum Engineering Project">Edit</button>
+                    <button class="btn-delete" onclick="deleteProject('Petroleum Engineering')" aria-label="Delete Petroleum Engineering Project">Delete</button>
                 </div>
             </div>
         </section>
@@ -56,3 +56,4 @@
     <footer>
         <p>These are all your projects!</p>
     </footer>
+</body>

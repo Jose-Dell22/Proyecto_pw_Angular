@@ -1,6 +1,9 @@
 :root {
     --primary-color: #00c8ff;
     --secondary-color: #0a0f12;
+    --accent-color: #ff6347; 
+    --edit-color: #ffcc00; 
+    --see-more-color: #32cd32; 
     --background-gradient: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     --header-bg-color: rgba(0, 0, 0, 0.8);
     --box-shadow-color: rgba(0, 200, 255, 0.5);

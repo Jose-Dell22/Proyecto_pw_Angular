@@ -5,14 +5,12 @@
     font-family: 'Orbitron', sans-serif;
 }
 
-
 body {
     background: var(--background-gradient);
     color: var(--text-color);
     line-height: 1.6;
     margin: 0;
 }
-
 
 header {
     position: fixed;
@@ -70,15 +68,16 @@ header {
 }
 
 main {
-    padding: 100px 20px 20px; 
+    padding: 100px 20px 20px;
 }
 
 .project-list {
     display: flex;
     justify-content: space-around;
-    margin-top: 100px; 
+    margin-top: 100px;
     margin-left: 80px;
 }
+
 .project-item {
     background-color: var(--secondary-color);
     border: 2px solid var(--border-color);
@@ -130,6 +129,49 @@ main {
     transform: scale(1.1);
 }
 
+.btn-add {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.btn-add:hover {
+    background-color: #0099cc;
+    transform: scale(1.1);
+}
+
+
+.btn-see-more {
+    background-color: var(--see-more-color);
+    color: var(--secondary-color);
+}
+
+.btn-see-more:hover {
+    background-color: #28a745;
+    transform: scale(1.1);
+}
+
+
+.btn-edit {
+    background-color: var(--edit-color);
+    color: var(--secondary-color);
+}
+
+.btn-edit:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+
+.btn-delete {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+.btn-delete:hover {
+    background-color: #e74c3c;
+    transform: scale(1.1);
+}
+
 
 .modal {
     position: fixed;
@@ -142,7 +184,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.3s ease;
+
 }
 
 .modal-content {
@@ -176,15 +218,6 @@ main {
     color: var(--link-hover-color);
 }
 
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
 footer {
     background-color: var(--header-bg-color);
