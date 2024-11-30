@@ -84,7 +84,7 @@ header {
     border-radius: 8px;
     background-color: var(--input-bg);
     margin-left: 20px;
-    margin-top: 40px;
+    margin-top: 180px;
     overflow-y: auto;
 }
 
@@ -101,7 +101,7 @@ header {
 .subscription-plans {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 20px; 
 }
 .plan:hover {
     transform: scale(1.05);

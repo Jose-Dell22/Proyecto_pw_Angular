@@ -28,8 +28,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px 20px;
     color: var(--primary-color);
-    position: relative;
 }
 
 .config-icon {
@@ -38,10 +38,6 @@ header {
     top: 10px;
 }
 
-.config-icon img {
-    width: 30px; 
-    height: 30px;
-}
 
 .navbar ul {
     list-style: none;

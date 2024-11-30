@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
-  imports: [RouterLink],
+  imports: [RouterModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
 })
