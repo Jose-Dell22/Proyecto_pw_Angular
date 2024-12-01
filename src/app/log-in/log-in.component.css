@@ -1,77 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Orbitron', Arial, sans-serif;
-    background: var(--background-gradient);
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100vh;
-    overflow-y: auto;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: var(--header-bg-color);
-    color: var(--text-color);
-    z-index: 1;
-    box-shadow: 0 0 10px var(--box-shadow-color);
-    padding: 20px 0;
-}
-
-.header-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    color: var(--primary-color);
-}
-
-
-.config-icon  {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-}
-
-.navbar ul {
-    list-style: none;
-    text-align: center;
-}
-
-.navbar ul li {
-    text-align: center;
-    display: inline-block;
-    margin: 0 10px;
-    border: 2px solid transparent;
-    padding: 5px;
-    transition: border-color var(--transition-speed) ease;
-}
-
-.navbar ul li:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border-color: var(--border-color);
-    border-radius: 5px;
-}
-
-.navbar ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 18px;
-    text-align: center;
-}
-
 .container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 160px 40px 20px;
 }
 
 .login-form {

@@ -1,59 +1,94 @@
-<body>
-    <header>
-        <div class="header-title">
-            <h1>ProyManager</h1>
-            <div class="config-icon">
-                <a routerLink="../Settings">
-                    <img src="../Images/Configuration.jpg" alt="Configuration">
-                </a>
+<app-navbar></app-navbar>
+<main>
+    <section id="projects">
+        <div class="actions" *ngIf="isAdmin()">
+            <button class="create-button" (click)="openCreateModal()">
+                Crear Nuevo Proyecto
+            </button>
+        </div>
+
+        <div class="project-list">
+            <div *ngIf="isLoading" class="loading">
+                Cargando proyectos...
+            </div>
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+            </div>
+            <div class="project-list">
+                <div class="project-item" *ngFor="let project of projects">
+                    <h3>{{ project.projectName }}</h3>
+                    <p class="description">{{ project.description }}</p>
+                    <p class="price">Precio: ${{ project.price }}</p>
+
+                    <!-- Admin controls -->
+                    <div class="project-controls" *ngIf="isAdmin()">
+                        <button (click)="openEditModal(project)">Editar</button>
+                        <button (click)="deleteProject(project.id)">Eliminar</button>
+                    </div>
+
+                    <!-- Worker controls -->
+                    <div class="project-controls" *ngIf="isWorker()">
+                        <button (click)="openEditModal(project)">Editar</button>
+                    </div>
+
+                    <!-- Viewer controls -->
+                    <div class="project-controls" *ngIf="isViewer()">
+                        <button (click)="openEditModal(project)">Ver más</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <nav class="navbar">
-            <ul>
-                <li><a routerLink="../Home">Home</a></li>
-                <li><a routerLink="../About_us">How we work?</a></li>
-                <li><a routerLink="../Projects">Your Projects</a></li>
-                <li><a (click)="logout()">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+    </section>
+</main>
+
+<!-- Modal para crear/editar proyecto -->
+<app-modal [visible]="showModal" [title]="modalTitle" (close)="showModal = false">
+    <form (ngSubmit)="saveProject()">
+        <div class="form-group">
+            <label for="projectName">Nombre del Proyecto</label>
+            <input type="text" id="projectName" name="projectName"
+                [ngModel]="editingProject?.projectName || newProject.projectName"
+                (ngModelChange)="editingProject ? editingProject.projectName = $event : newProject.projectName = $event"
+                required>
+        </div>
     
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea id="description" name="description" [ngModel]="editingProject?.description || newProject.description"
+                (ngModelChange)="editingProject ? editingProject.description = $event : newProject.description = $event"
+                required></textarea>
+        </div>
+    
+        <div class="form-group">
+            <label for="price">Precio</label>
+            <input type="number" id="price" name="price" [ngModel]="editingProject?.price || newProject.price"
+                (ngModelChange)="editingProject ? editingProject.price = $event : newProject.price = $event" required>
+        </div>
+    
+        <div class="modal-buttons">
+            <button type="submit" [disabled]="isLoading">
+                {{ isLoading ? 'Guardando...' : 'Guardar' }}
+            </button>
+            <button type="button" (click)="showModal = false" [disabled]="isLoading">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</app-modal>
 
-    <div class="btn-add">
-        <button onclick="addProject()" aria-label="Add New Project">Add New Project</button>
+<!-- Modal de confirmación para eliminar -->
+<app-modal [visible]="deleteModalVisible" title="Confirmar Eliminación" (close)="cancelDeleteProject()">
+    <p>¿Estás seguro de que quieres eliminar este proyecto?</p>
+    <div class="modal-buttons">
+        <button (click)="confirmDeleteProject()" [disabled]="isLoading">
+            {{ isLoading ? 'Eliminando...' : 'Eliminar' }}
+        </button>
+        <button (click)="cancelDeleteProject()" [disabled]="isLoading">
+            Cancelar
+        </button>
     </div>
+</app-modal>
 
-    <main>
-        <section id="projects">
-            <div class="project-list">
-                <div class="project-item">
-                    <h3>Software Engineering</h3>
-                    <p>Software Engineering focuses on the design, development, and management of software. Students learn about programming, system design, and software development methodologies, preparing graduates to work in a variety of technology industries.</p>
-                    <button class="btn-see-more" onclick="showModal('Software Engineering focuses on the design, development, and management of software. Students learn about programming, system design, and software development methodologies, preparing graduates to work in a variety of technology industries.')" aria-label="See more about Software Engineering">See More</button>
-                    <button class="btn-edit" onclick="editProject('Software Engineering')" aria-label="Edit Software Engineering Project">Edit</button>
-                    <button class="btn-delete" onclick="deleteProject('Software Engineering')" aria-label="Delete Software Engineering Project">Delete</button>
-                </div>
-
-                <div class="project-item">
-                    <h3>Agricultural Engineering</h3>
-                    <p>Agricultural Engineering focuses on applying engineering principles to solve problems in agriculture. Students study topics such as agricultural resource management, crop technology, and agricultural machinery.</p>
-                    <button class="btn-see-more" onclick="showModal('Agricultural Engineering focuses on applying engineering principles to solve problems in agriculture. Students study topics such as agricultural resource management, crop technology, and agricultural machinery.')" aria-label="See more about Agricultural Engineering">See More</button>
-                    <button class="btn-edit" onclick="editProject('Agricultural Engineering')" aria-label="Edit Agricultural Engineering Project">Edit</button>
-                    <button class="btn-delete" onclick="deleteProject('Agricultural Engineering')" aria-label="Delete Agricultural Engineering Project">Delete</button>
-                </div>
-
-                <div class="project-item">
-                    <h3>Petroleum Engineering</h3>
-                    <p>Petroleum Engineering is oriented towards the study of exploration, extraction, and processing of petroleum and natural gas. Students learn about drilling techniques, petroleum refining, and energy resource management.</p>
-                    <button class="btn-see-more" onclick="showModal('Petroleum Engineering is oriented towards the study of exploration, extraction, and processing of petroleum and natural gas. Students learn about drilling techniques, petroleum refining, and energy resource management.')" aria-label="See more about Petroleum Engineering">See More</button>
-                    <button class="btn-edit" onclick="editProject('Petroleum Engineering')" aria-label="Edit Petroleum Engineering Project">Edit</button>
-                    <button class="btn-delete" onclick="deleteProject('Petroleum Engineering')" aria-label="Delete Petroleum Engineering Project">Delete</button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>These are all your projects!</p>
-    </footer>
-</body>
+<footer>
+    <p>These are all your projects!</p>
+</footer>

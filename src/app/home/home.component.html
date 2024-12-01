@@ -1,65 +1,42 @@
-<body>
-    <header>
-        <div class="header-title">
-            <h1>ProyManager</h1>
-            <div class="config-icon">
-                <div routerLink="./About_us">
-                    <img src="../Images/Configuration.jpg" alt="Configuration">
-                </div>
-            </div>
-        </div>
-        <div class="config-icon">
-            <a routerLink="../Settings">
-                <img src="../Images/Configuration.jpg" alt="Configuration">
-            </a>
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a routerLink="../Home">Home</a></li>
-                <li><a routerLink="../About_us">How we work?</a></li>
-                <li><a routerLink="../Projects">Your Projects</a></li>
-                <li><a routerLink="../Log_in">Log In</a></li>
-            </ul>
-        </nav>
-    </header>
+<app-navbar></app-navbar>
 
-    <div class="container">
-        <div class="image-gallery-wrapper">
-            <div class="image-gallery">
-                <img id="gallery-image" src="../Images/Robotic_machine.jpg" alt="Projects">
-            </div>
-            <div class="arrows">
-                <button onclick="changeImage(-1)">&#10094;</button>
-                <button onclick="changeImage(1)">&#10095;</button>
-            </div>
-            <div class="progress-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-            </div>
+<div class="container">
+    <div class="image-gallery-wrapper">
+        <div class="image-gallery">
+            <img id="gallery-image" [src]="images[currentImageIndex]" alt="Projects">
         </div>
-        <div class="text-container">
-            <h2>What is ProyManager?</h2>
-            <p>
-                ProyManager is an innovative platform designed to optimize project management. 
-                Its goal is to facilitate the planning, execution, and monitoring of initiatives 
-                across various fields, from software development to the implementation of business 
-                robotics projects.
-            </p>
-            <p>
-                With an intuitive interface and advanced functionalities, ProyManager allows users 
-                to assign tasks, set deadlines, and collaborate in real-time, improving productivity 
-                and communication among teams.
-            </p>
-            <p>
-                Its standout features include the ability to create visual timelines, progress 
-                tracking tools, and analysis options that help identify areas for improvement. 
-                ProyManager adapts to the needs of both small and large organizations, making it 
-                the perfect ally to take any project from concept to reality.
-            </p>
+        <div class="arrows">
+            <button (click)="changeImage(-1)">&#10094;</button>
+            <button (click)="changeImage(1)">&#10095;</button>
+        </div>
+        <div class="progress-dots">
+            <span *ngFor="let image of images; let i = index" class="dot" [class.active]="isActive(i)"
+                (click)="setImage(i)">
+            </span>
         </div>
     </div>
+    <div class="text-container">
+        <h2>What is ProyManager?</h2>
+        <p>
+            ProyManager is an innovative platform designed to optimize project management.
+            Its goal is to facilitate the planning, execution, and monitoring of initiatives
+            across various fields, from software development to the implementation of business
+            robotics projects.
+        </p>
+        <p>
+            With an intuitive interface and advanced functionalities, ProyManager allows users
+            to assign tasks, set deadlines, and collaborate in real-time, improving productivity
+            and communication among teams.
+        </p>
+        <p>
+            Its standout features include the ability to create visual timelines, progress
+            tracking tools, and analysis options that help identify areas for improvement.
+            ProyManager adapts to the needs of both small and large organizations, making it
+            the perfect ally to take any project from concept to reality.
+        </p>
+    </div>
+</div>
 
-    <footer>
-        <p>Are you ready to use our management system?</p>
-    </footer>
-</body>
+<footer>
+    <p>Are you ready to use our management system?</p>
+</footer>

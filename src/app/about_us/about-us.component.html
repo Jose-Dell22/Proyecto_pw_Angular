@@ -1,59 +1,116 @@
-<body>
-    <header>
-        <div class="header-title">
-            <h1>ProyManager</h1>
-            <div class="config-icon">
-                <a routerLink="../Settings">
-                    <img src="../Images/Configuration.jpg" alt="Configuration">
-                </a>
+
+<app-navbar></app-navbar>
+<section class="intro">
+    <h1>Choose Your Plan</h1>
+    <p class="intro-text">Select the plan that best fits your needs and start managing your projects efficiently.
+    </p>
+</section>
+<main class="container">
+    
+
+    <section class="subscription-plans">
+        <!-- Plan Administrador -->
+        <div class="plan" *ngIf="isAdmin()">
+            <h2>Administrator</h2>
+            <div class="plan-content">
+                <div class="admin-badge">Admin Only</div>
+                <p class="description">Full access to all functionalities</p>
+                <ul class="features">
+                    <li>Complete project management</li>
+                    <li>Team administration</li>
+                    <li>Advanced analytics</li>
+                </ul>
+                <div class="price">
+                    <span class="amount">$20</span>
+                    <span class="period">/month</span>
+                </div>
+                <button class="subscribe-button" (click)="selectPlan('ROLE_ADMIN')">
+                    Choose Administrator Plan
+                </button>
             </div>
         </div>
         
-        <nav class="navbar">
-            <ul>
-                <li><a routerLink="../Home">Home</a></li>
-                <li><a routerLink="../About_us">How we work?</a></li>
-                <li><a routerLink="../Projects">Your Projects</a></li>
-                <li><a href="../Log_in">Log In</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="text-container">
-            <h2>How does ProyManager work?</h2>
-            <p>
-                ProyManager uses an agile methodology that allows users to effectively manage their projects, 
-                providing tools for assigning tasks, setting deadlines, and tracking progress. 
-                With an intuitive interface and robust database integration, it ensures smooth collaboration 
-                and productivity optimization for teams of any size.
-            </p>
-
-            <h2>Subscription Plans</h2>
-            <div class="subscription-plans">
-                <div class="plan">
-                    <h3>Administrator</h3>
-                    <p>Full access to all functionalities.</p>
-                    <p><strong>Price: $20/month</strong></p>
-                    <a routerLink="../Log_in_form" class="subscribe-button">Add</a>
+        <!-- Mensaje para no admins que intenten acceder -->
+        <div class="plan disabled" *ngIf="!isAdmin()">
+            <h2>Administrator</h2>
+            <div class="plan-content">
+                <p class="restricted-message">
+                    This plan is only available for administrators.
+                    Please contact your system administrator for access.
+                </p>
+                <div class="price">
+                    <span class="amount">$20</span>
+                    <span class="period">/month</span>
                 </div>
-                <div class="plan">
-                    <h3>Worker</h3>
-                    <p>Limited access to the features needed for task management.</p>
-                    <p><strong>Price: $10/month</strong></p>
-                    <a routerLink="../Log_in_form" class="subscribe-button">Add</a>
-                </div>
-                <div class="plan">
-                    <h3>Viewer</h3>
-                    <p>Access only to view projects and tasks without modifications.</p>
-                    <p><strong>Price: $5/month</strong></p>
-                    <a routerLink="../Log_in_form" class="subscribe-button">Add</a>
-                </div>
+                <button class="subscribe-button" disabled>
+                    Restricted Access
+                </button>
             </div>
         </div>
-    </div>
 
-    <footer>
-        <p>Ready to optimize your project management?</p>
-    </footer>
-</body>
+        <!-- Plan Worker -->
+        <div class="plan" *ngIf="isAdmin()">
+            <h2>Worker</h2>
+            <div class="plan-content">
+                <div class="admin-badge">Admin Only</div>
+                <p class="description">Limited access to task management features</p>
+                <ul class="features">
+                    <li>Task management</li>
+                    <li>Project collaboration</li>
+                    <li>Basic reporting</li>
+                </ul>
+                <div class="price">
+                    <span class="amount">$10</span>
+                    <span class="period">/month</span>
+                </div>
+                <button class="subscribe-button" (click)="selectPlan('ROLE_WORKER')">
+                    Choose Worker Plan
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mensaje para no admins - Plan Worker -->
+        <div class="plan disabled" *ngIf="!isAdmin()">
+            <h2>Worker</h2>
+            <div class="plan-content">
+                <p class="restricted-message">
+                    This plan is only available through administrator assignment.
+                    Please contact your system administrator for access.
+                </p>
+                <div class="price">
+                    <span class="amount">$10</span>
+                    <span class="period">/month</span>
+                </div>
+                <button class="subscribe-button" disabled>
+                    Restricted Access
+                </button>
+            </div>
+        </div>
+
+        <!-- Plan Viewer -->
+        <div class="plan">
+            <h2>Viewer</h2>
+            <div class="plan-content">
+                <p class="description">View-only access to projects</p>
+                <ul class="features">
+                    <li>Project viewing</li>
+                    <li>Task tracking</li>
+                    <li>Basic dashboard</li>
+                </ul>
+                <div class="price">
+                    <span class="amount">$5</span>
+                    <span class="period">/month</span>
+                </div>
+                <button class="subscribe-button" (click)="selectPlan('ROLE_USER')">
+                    Choose Viewer Plan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+</main>
+<footer>
+    <p class="cta-text">Ready to optimize your project management?</p>
+    <p class="footer-note">Choose your plan and start managing your projects more efficiently today!</p>
+</footer>

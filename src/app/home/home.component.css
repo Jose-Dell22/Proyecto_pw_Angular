@@ -1,97 +1,75 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Orbitron', Arial, sans-serif;
-    background: var(--background-gradient);
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100vh;
-    overflow-y: auto;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: var(--header-bg-color);
-    color: var(--text-color);
-    z-index: 1;
-    box-shadow: 0 0 10px var(--box-shadow-color);
-    padding: 20px 0;
-}
-
-.header-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    color: var(--primary-color);
-}
-
-.config-icon {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-}
-
-.navbar ul {
-    list-style: none;
-    text-align: center;
-}
-
-.navbar ul li {
-    display: inline-block;
-    margin: 0 10px;
-    border: 2px solid transparent;
-    padding: 5px;
-    transition: border-color var(--transition-speed) ease;
-}
-
-.navbar ul li:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border-color: var(--border-color);
-    border-radius: 5px;
-}
-
-.navbar ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 18px;
-}
-
 .container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 160px 40px 20px;
+    padding: 0px 38px;
 }
 
 .image-gallery-wrapper {
     position: relative;
-    width: 100%;
-    max-width: 50%;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    margin: 40px auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .image-gallery {
     width: 100%;
-    height: 440px;
+    height: 400px;
     overflow: hidden;
+    margin-top: 40px;
 }
 
 .image-gallery img {
     width: 100%;
-    height: 440px;
+    height: 100%;
     object-fit: cover;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease-in-out;
 }
+
+.arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.arrows button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.arrows button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.progress-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/* Resto de tus estilos existentes */
 
 .arrows {
     position: absolute;
@@ -194,18 +172,5 @@ footer {
         margin-left: 0;
         align-self: flex-start;
     }
-
-    header {
-        padding: 10px 0;
-    }
-
-    .header-title {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .config-icon {
-        right: 10px;
-        top: 5px;
-    }
+    
 }

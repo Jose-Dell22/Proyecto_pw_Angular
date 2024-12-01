@@ -1,0 +1,19 @@
+<header>
+    <div class="header-title">
+        <h1>ProyManager</h1>
+        <div class="config-icon">
+            <a routerLink="../Settings">
+                <img src="../Images/Configuration.jpg" alt="Configuration">
+            </a>
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a routerLink="../Home">Home</a></li>
+            <li><a routerLink="../About_us">How we work?</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="../Projects">Your Projects</a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="../Log_in">Log In</a></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+        </ul>
+    </nav>
+</header>

@@ -1,41 +1,75 @@
-<body>
-    <header>
-        <div class="header-title">
-            <h1>Register - ProyManager</h1>
-        </div>
-        <div class="config-icon">
-            <a routerLink="../Settings">
-                <img src="../Images/Configuration.jpg" alt="Configuration">
-            </a>
-        </div>
-        <nav class="navbar">
-            <ul>
-                <li><a routerLink="../Home">Home</a></li>
-                <li><a routerLink="../About_us">How we work?</a></li>
-                <li><a routerLink="../Projects">Your Projects</a></li>
-                <li><a routerLink="../Log_in">Log In</a></li>
-            </ul>
-        </nav>
-    </header>
+
+    <app-navbar></app-navbar>
 
     <div class="container">
         <div class="text-container">
-            <form id="registration-Form">
+            <form id="registration-Form" (ngSubmit)="onSubmit($event)" #registerForm="ngForm">
                 <h2>Registration Form</h2>
+
+                <div *ngIf="registerData.role" class="selected-plan">
+                    <h3>Selected Plan: {{ registerData.role === 'ROLE_ADMIN' ? 'Administrator' :
+                        registerData.role === 'ROLE_WORKER' ? 'Worker' : 'Viewer' }}</h3>
+                </div>
+
                 <div class="input-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    <input type="text" id="name" name="name" [(ngModel)]="registerData.name" #name="ngModel" required
+                        minlength="2" maxlength="50" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]+$">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+                        <div *ngIf="name.errors?.['required']">Name is required</div>
+                        <div *ngIf="name.errors?.['minlength']">Name must be at least 2 characters</div>
+                        <div *ngIf="name.errors?.['pattern']">Only letters, spaces, hyphens and apostrophes allowed
+                        </div>
+                    </div>
                 </div>
+
                 <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required placeholder="Enter your username">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" [(ngModel)]="registerData.email" #email="ngModel"
+                        required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                        <div *ngIf="email.errors?.['required']">Email is required</div>
+                        <div *ngIf="email.errors?.['pattern']">Please enter a valid email address</div>
+                    </div>
                 </div>
+
                 <div class="input-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Password">
+                    <input type="password" id="password" name="password" [(ngModel)]="registerData.password"
+                        #password="ngModel" required minlength="8"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                        <div *ngIf="password.errors?.['required']">Password is required</div>
+                        <div *ngIf="password.errors?.['minlength']">Password must be at least 8 characters</div>
+                        <div *ngIf="password.errors?.['pattern']">
+                            Password must contain at least:
+                            <ul>
+                                <li>One uppercase letter</li>
+                                <li>One lowercase letter</li>
+                                <li>One number</li>
+                                <li>One special character (&#64;$!%*?&)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <input type="hidden" id="role" name="role" value="">
-                <button type="submit">Register</button>
+
+                <div class="input-group">
+                    <label for="projectIds">Project IDs</label>
+                    <input type="text" id="projectIds" name="projectIds" [(ngModel)]="projectIdsInput" #projectIds="ngModel" required
+                        pattern="^(\d+,)*\d+$">
+                    <div *ngIf="projectIds.invalid && (projectIds.dirty || projectIds.touched)" class="error-message">
+                        <div *ngIf="projectIds.errors?.['required']">Project IDs are required</div>
+                        <div *ngIf="projectIds.errors?.['pattern']">Enter comma-separated project IDs (e.g., 1,2,3)</div>
+                    </div>
+                </div>
+
+                <div *ngIf="errorMessage" class="error-message">
+                    {{errorMessage}}
+                </div>
+
+                <button type="submit" [disabled]="registerForm.invalid || isLoading || !registerData.role">
+                    {{isLoading ? 'Registering...' : 'Register'}}
+                </button>
             </form>
         </div>
     </div>
@@ -43,4 +77,3 @@
     <footer>
         <p>Ready to optimize your project management?</p>
     </footer>
-</body>

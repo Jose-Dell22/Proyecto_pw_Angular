@@ -1,86 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Orbitron', sans-serif;
-}
-
-body {
-    background: var(--background-gradient);
-    color: var(--text-color);
-    line-height: 1.6;
-    margin: 0;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: var(--header-bg-color);
-    color: var(--text-color);
-    z-index: 1;
-    box-shadow: 0 0 10px var(--box-shadow-color);
-    padding: 20px 0;
-}
-
-.header-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    color: var(--primary-color);
-}
-
-.config-icon {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-}
-
-.navbar {
-    margin-top: 15px;
-}
-
-.navbar ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-}
-
-.navbar li {
-    margin: 0 15px;
-}
-
-.navbar a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    border: 2px solid transparent;
-    transition: all var(--transition-speed);
-}
-
-.navbar a:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border-color: var(--border-color);
-    border-radius: 5px;
-}
-
-main {
-    padding: 100px 20px 20px;
-}
-
 .project-list {
     display: flex;
     justify-content: space-around;
-    margin-top: 100px;
-    margin-left: 80px;
 }
 
 .project-item {
-    background-color: var(--secondary-color);
-    border: 2px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px var(--box-shadow-color);
@@ -122,6 +45,26 @@ main {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color var(--transition-speed), transform var(--transition-speed);
+
+}
+
+.project-item button:nth-child(2) {
+    background-color: rgba(255, 0, 0, 0.634);
+}
+
+.project-item button:nth-child(3) {
+    background-color: rgba(0, 255, 17, 0.634);
+}
+
+.project-item > .description{
+    color: black;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.project-item>.price {
+    color: rgb(114, 114, 114);
 }
 
 .project-item button:hover {
@@ -129,48 +72,6 @@ main {
     transform: scale(1.1);
 }
 
-.btn-add {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-.btn-add:hover {
-    background-color: #0099cc;
-    transform: scale(1.1);
-}
-
-
-.btn-see-more {
-    background-color: var(--see-more-color);
-    color: var(--secondary-color);
-}
-
-.btn-see-more:hover {
-    background-color: #28a745;
-    transform: scale(1.1);
-}
-
-
-.btn-edit {
-    background-color: var(--edit-color);
-    color: var(--secondary-color);
-}
-
-.btn-edit:hover {
-    background-color: #ffd700;
-    transform: scale(1.1);
-}
-
-
-.btn-delete {
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-}
-
-.btn-delete:hover {
-    background-color: #e74c3c;
-    transform: scale(1.1);
-}
 
 
 .modal {
@@ -184,7 +85,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-
+    animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
@@ -219,6 +120,16 @@ main {
 }
 
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 footer {
     background-color: var(--header-bg-color);
     color: var(--text-color);
@@ -227,4 +138,111 @@ footer {
     margin-top: 20px;
     font-size: 1rem;
     box-shadow: 0px -4px 10px var(--box-shadow-color);
+}
+
+/* src/app/projects/projects.component.css */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.actions {
+    margin-bottom: 30px;
+    padding-left: 32px;
+}
+
+.create-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0px 40px;
+    width: 100%;
+}
+
+.project-item {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.project-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.project-controls button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: #dc3545;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ffe6e6;
+    border-radius: 4px;
+    z-index: 99;
+    position: absolute;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* projects.component.css */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-buttons button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.modal-buttons button[type="button"] {
+    background-color: #f44336;
+    color: white;
 }
