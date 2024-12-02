@@ -75,7 +75,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   deleteProject(id: number): void {
-    if (confirm('¿Estás seguro de que quieres eliminar este proyecto?')) {
+    if (confirm('are you sure about delete this project?')) {
       this.projectService.deleteProject(id).subscribe({
         next: () => {
           this.projects = this.projects.filter(p => p.id !== id);
@@ -117,7 +117,7 @@ export class ProjectsComponent implements OnInit {
   };
 
   openCreateModal(): void {
-    this.modalTitle = 'Crear Nuevo Proyecto';
+    this.modalTitle = 'Create new project';
     this.editingProject = null;
     this.newProject = {
       id: 0,
@@ -129,7 +129,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   openEditModal(project: Project): void {
-    this.modalTitle = 'Editar Proyecto';
+    this.modalTitle = 'Edit project';
     this.editingProject = { ...project };
     this.showModal = true;
   }

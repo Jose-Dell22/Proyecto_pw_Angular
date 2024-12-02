@@ -3,13 +3,13 @@
     <section id="projects">
         <div class="actions" *ngIf="isAdmin()">
             <button class="create-button" (click)="openCreateModal()">
-                Crear Nuevo Proyecto
+                Create new project
             </button>
         </div>
 
         <div class="project-list">
             <div *ngIf="isLoading" class="loading">
-                Cargando proyectos...
+                loading projects
             </div>
             <div *ngIf="errorMessage" class="error-message">
                 {{ errorMessage }}
@@ -18,22 +18,22 @@
                 <div class="project-item" *ngFor="let project of projects">
                     <h3>{{ project.projectName }}</h3>
                     <p class="description">{{ project.description }}</p>
-                    <p class="price">Precio: ${{ project.price }}</p>
+                    <p class="price">Price: ${{ project.price }}</p>
 
                     <!-- Admin controls -->
                     <div class="project-controls" *ngIf="isAdmin()">
-                        <button (click)="openEditModal(project)">Editar</button>
-                        <button (click)="deleteProject(project.id)">Eliminar</button>
+                        <button (click)="openEditModal(project)">Edit</button>
+                        <button (click)="deleteProject(project.id)">delete</button>
                     </div>
 
                     <!-- Worker controls -->
                     <div class="project-controls" *ngIf="isWorker()">
-                        <button (click)="openEditModal(project)">Editar</button>
+                        <button (click)="openEditModal(project)">Edit</button>
                     </div>
 
                     <!-- Viewer controls -->
                     <div class="project-controls" *ngIf="isViewer()">
-                        <button (click)="openEditModal(project)">Ver más</button>
+                        <button (click)="openEditModal(project)">see more</button>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
 <app-modal [visible]="showModal" [title]="modalTitle" (close)="showModal = false">
     <form (ngSubmit)="saveProject()">
         <div class="form-group">
-            <label for="projectName">Nombre del Proyecto</label>
+            <label for="projectName">Name</label>
             <input type="text" id="projectName" name="projectName"
                 [ngModel]="editingProject?.projectName || newProject.projectName"
                 (ngModelChange)="editingProject ? editingProject.projectName = $event : newProject.projectName = $event"
@@ -53,24 +53,24 @@
         </div>
     
         <div class="form-group">
-            <label for="description">Descripción</label>
+            <label for="description">Description</label>
             <textarea id="description" name="description" [ngModel]="editingProject?.description || newProject.description"
                 (ngModelChange)="editingProject ? editingProject.description = $event : newProject.description = $event"
                 required></textarea>
         </div>
     
         <div class="form-group">
-            <label for="price">Precio</label>
+            <label for="price">Price</label>
             <input type="number" id="price" name="price" [ngModel]="editingProject?.price || newProject.price"
                 (ngModelChange)="editingProject ? editingProject.price = $event : newProject.price = $event" required>
         </div>
     
         <div class="modal-buttons">
             <button type="submit" [disabled]="isLoading">
-                {{ isLoading ? 'Guardando...' : 'Guardar' }}
+                {{ isLoading ? 'saving...' : 'save' }}
             </button>
             <button type="button" (click)="showModal = false" [disabled]="isLoading">
-                Cancelar
+                Cancel
             </button>
         </div>
     </form>
@@ -78,13 +78,13 @@
 
 <!-- Modal de confirmación para eliminar -->
 <app-modal [visible]="deleteModalVisible" title="Confirmar Eliminación" (close)="cancelDeleteProject()">
-    <p>¿Estás seguro de que quieres eliminar este proyecto?</p>
+    <p>are you sure about delete this project?</p>
     <div class="modal-buttons">
         <button (click)="confirmDeleteProject()" [disabled]="isLoading">
-            {{ isLoading ? 'Eliminando...' : 'Eliminar' }}
+            {{ isLoading ? 'deleting...' : 'delete' }}
         </button>
         <button (click)="cancelDeleteProject()" [disabled]="isLoading">
-            Cancelar
+            Cancel
         </button>
     </div>
 </app-modal>
